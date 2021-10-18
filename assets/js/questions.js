@@ -1,6 +1,6 @@
 // Define the array of questions asan array of objects, each object represents a question, 4 answer choices, and the correct answer
-// These questions were obtained from https://www.w3schools.com/quiztest/quiztest.asp?qtest=JavaScript 
-var questionArray = [
+// These questions were obtained from https://www.w3schools.com/quiztest/quiztest.asp?qtest=JavaScript
+var questionBank = [
   {
     qn: "Arrays in Javascript can be used to store __________.",
     choices: ["numbers", "booleans", "strings", "all of the above"],
@@ -105,5 +105,36 @@ var questionArray = [
     qn: "How do you find the minimum of x and y using JavaScript? ",
     choices: ["min(x,y)", "Math.min(x,y)", "Math.min(xy)", "min(xy)"],
     ans: 1,
+  },
+  {
+    qn: "The web API localStorage object stores keys and values in what variable type:",
+    choices: ["numbers", "arrays", "objects", "strings"],
+    ans: 3,
+  },
+
+  {
+    qn: "The concept of assigning an event handler in dynamic content to multiple elements as opposed to a single element, then delegating to a single element upon event is known as:",
+    choices: ["batching", "event delegation", "multi-tasking", "isolation"],
+    ans: 1,
+  },
+  {
+    qn: "The acronym for the object representation of a webpage, DOM, stands for:",
+    choices: [
+      "doorway opening mechanism",
+      "digital orientation method",
+      "document object model",
+      "device operation manual",
+    ],
+    ans: 2,
+  },
+  {
+    qn: "The starting index value for an array in JavaScript is ______ :",
+    choices: ["null", "void", "0", "1"],
+    ans: 2,
+  },
+  {
+    qn:  "A very useful tool used during development and debugging for printing content to the debugger is:",
+    choices: ["JavaScript", "terminal/ bash", "for loops", "console log"],
+    ans: 3,
   },
 ];
