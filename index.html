@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <title>Javascript Quiz</title>
+</head>
+
+<body>
+    <header>
+        <h3 id="view-high-scores">View High Scores</h3>
+        <h3 class="quiz-timer">Time: <span id="timer"></span></h3>
+    </header>
+
+    <section id="start-quiz-container" class="show">
+        <div class="container">
+            <h1>Javascript Quiz</h1>
+            <p>Try to answer the following code-related questions within the time limit.
+                Keep in mind that incorrect answers will remove 10 seconds from your time left.
+                Your score is the time you have left after all questions are answered!
+            </p>
+            <button class="btn start-end" id="start-game">Start Quiz</button>
+        </div>
+    </section>
+
+    <section id="question-container" class="show">
+        <div class="container">
+            <div id="question"></div>
+            <div id="answer-buttons" class="btn-grid"></div>
+        </div>
+    </section>
+
+    <section id="answer-key-container" class="container show">
+        <h4 id="right-ans" class="answer-key show">Correct &#9989 </h4>
+        <h4 id="wrong-ans" class="answer-key show">Wrong &#10060 </h4>
+    </section>
+
+    <section id="end-quiz-container" class="show">
+        <div class="container">
+            <div id=score-banner>
+                <h1>All done!</h1>
+            </div>
+            <form id="initials-form" class="initials">
+                <p> Enter Initials:
+                    <input type="text" name="initials" id="initials" class="text-input" />
+                    <button class="btn startend" id="sumbit-score" type="submit">Submit</button>
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <section id="high-scores-container" class="show">
+        <div class="high-scores container">
+            <h1 class="high-score">High Scores</h1>
+            <ol id="high-score-list" class="score-list"></ol>
+            <div>
+                <button class="btn" id="go-back">Go back</button>
+                <button class="btn" id="clear-high-scores">Clear high scores</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="./assets/js/questions.js"></script>    
+    <script src="./assets/js/script.js"></script>
+
+</body>
+
+</html>

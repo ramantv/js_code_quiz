@@ -1,0 +1,130 @@
+/* remove default CSS styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* color variables for different sections of the page.  */
+:root {
+  --primary: #1b28d6;
+  --secondary: #0f2c3a;
+  --tertiary: #aa1667;
+  --back_color1: #6cc0eb;
+  --btn_text_col: #ffffff;
+}
+
+/* Header  styles */
+header {
+  background-color: var(--back_color1);
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+#view-high-scores:hover {
+  cursor: pointer;
+  color: white;
+  background: var(--secondary);
+  border-radius: 35px;
+}
+
+header h3 {
+  padding: 10px;
+  font-size: 1.5rem;
+  display: inline;
+}
+
+.quiz-timer {
+  font-size: 1.5rem;
+  color: var(--primary);
+  display: inline;
+  text-align: right;
+  padding-right: 20px;
+}
+
+/* Content styles */
+
+.container {
+  padding: 20px;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  align-items: flex-start;
+  /* justify-content: flex-start; */
+  text-align: center;
+}
+
+h1 {
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 15px;
+}
+
+p {
+  color: var(--secondary);
+  font-size: 1.25rem;
+  padding: 5px;
+}
+
+.questions {
+  padding: 30px 15px;
+  margin: auto;
+}
+
+.answer-key {
+  padding: 5px 5px;
+  margin: auto;
+  justify-content: flex-start;
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+/*Button Styling */
+.btn {
+  background: var(--secondary);
+  color: var(--btn_text_col);
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 3px grey;
+  margin-top: 10px;
+}
+
+.start-end {
+  width: 25%;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background: var(--tertiary);
+  border-radius: 10px;
+  box-shadow: 0 2px grey;
+  cursor: pointer;
+}
+
+.btn:active {
+  border: none;
+  outline: none;
+  box-shadow: 0 0 grey;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-rows: repeat(4, auto);
+  grid-gap: 5px;
+  margin: 20px 0;
+}
