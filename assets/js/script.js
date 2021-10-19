@@ -8,9 +8,13 @@ var questionDivEl = document.getElementById("question-div");
 var questionTextEl = document.getElementById("qn-text");
 var answerbuttonsEl = document.getElementById("answer-buttons");
 
+var rightAnswerEl = document.getElementById("right-ans");
+var wrongAnswerEl = document.getElementById("wrong-ans");
+
 // Global variables
 var curQn = 0; // tracks the current question
 var timeLeft = 120; // the time left in the quiz, starts at 120 seconds
+const penalty = 10; // seconds penalized for wrong answers
 var timerInterval = 0;
 var gameOver = false;
 
@@ -44,19 +48,20 @@ var displayQuestion = function (index) {
 
 //check if answer is correct
 var checkAnswer = function (event) {
-  var selectedanswer = event.target.innerText;
-  console.log("selected answer = " + selectedanswer);
-  console.log(
-    "correct answer = " + quizQuestions[curQn].choices[quizQuestions[curQn].ans]
-  );
+  var selectedAnswer = event.target.innerText;
+  var goodAnswer = quizQuestions[curQn].choices[quizQuestions[curQn].ans];
+  console.log("selected answer = " + selectedAnswer);
+  console.log("correct answer = " + goodAnswer );
 
-  if (
-    selectedanswer === quizQuestions[curQn].choices[quizQuestions[curQn].ans]
-  ) {
+  if (selectedAnswer === goodAnswer) {
     console.log("Correct answer chosen!!");
+    showAnswerRightOrWrongMessage(true);
   } else {
     console.log("Wrong answer chosen!!");
+    showAnswerRightOrWrongMessage(false);
+    applyPenalty();
   }
+
   /*
   if (arrayShuffledQuestions[QuestionIndex].a === selectedanswer.innerText) {
     answerCorrect();
@@ -109,6 +114,23 @@ function showQuestion(index) {
       questionNumber + ". " + questionsArray[index].answers[i];
     liEl.append(buttonEl);
   }
+}
+
+function showAnswerRightOrWrongMessage(booleanRight) {
+  if (booleanRight) {
+    showElement(rightAnswerEl, true);
+    showElement(wrongAnswerEl, false);
+  } else {
+    showElement(rightAnswerEl, false);
+    showElement(wrongAnswerEl, true);
+  }
+}
+
+function applyPenalty() {
+    timeLeft = timeLeft - penalty;
+    if (timeLeft <= 0) {
+        timeLeft = 0;
+    }
 }
 
 // To show/hide the element - call showElement(el, true) - to show.

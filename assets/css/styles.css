@@ -47,7 +47,6 @@ header h3 {
 }
 
 /* Content styles */
-
 .container {
   padding: 20px;
   flex-direction: column;
@@ -68,7 +67,7 @@ h1 {
 p {
   color: var(--secondary);
   font-size: 1.25rem;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   padding: 5px;
 }
@@ -76,23 +75,28 @@ p {
 .questions {
   padding: 30px 15px;
   margin: auto;
+  border-bottom: double;
 }
 
 .question-text {
-    width: 80%;
-    /* margin: auto; */
-    color: var(--question-text-col);
-    font-size: 1.25rem;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    text-align: center;
-    padding-bottom: 15px;
+  width: 80%;
+  color: var(--question-text-col);
+  font-size: 1.25rem;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 15px;
 }
 
 .answer-key {
+  width: 80%;
   padding: 5px 5px;
-  margin: auto;
-  justify-content: flex-start;
+}
+
+.right-or-wrong {
+    width: 80%;
+    margin: auto;
+    text-align: center;
 }
 
 .show {
@@ -102,14 +106,6 @@ p {
 .hide {
   display: none;
 }
-
-/* #question {
-    color: var(--primary);
-    text-align: left;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
- */
 
 /*Button Styling */
 .btn {
@@ -149,7 +145,6 @@ p {
   width: 80%;
   grid-template-rows: repeat(4, auto);
   grid-gap: 10px;
-  /* margin: 20px 0; */
 }
 
 .answerbtn {
