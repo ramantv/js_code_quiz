@@ -12,6 +12,7 @@
   --tertiary: #c50a29;
   --back_color1: #6cc0eb;
   --question-text-col: black;
+  --btn-hover-col:  #1a1aa5;
   --btn_text_col: #ffffff;
 }
 
@@ -124,7 +125,7 @@ p {
 }
 
 .btn:hover {
-  background: var(--tertiary);
+  background: var(--btn-hover-col);
   border-radius: 10px;
   box-shadow: 0 2px grey;
   cursor: pointer;
