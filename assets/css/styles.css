@@ -11,6 +11,7 @@
   --secondary: #0f2c3a;
   --tertiary: #c50a29;
   --back_color1: #6cc0eb;
+  --question-text-col: black;
   --btn_text_col: #ffffff;
 }
 
@@ -50,11 +51,10 @@ header h3 {
 .container {
   padding: 20px;
   flex-direction: column;
-  width: 50%;
+  width: 80%;
   margin: auto;
   align-items: flex-start;
-  /* justify-content: flex-start; */
-  text-align: center;
+  justify-content: flex-start;
 }
 
 h1 {
@@ -62,17 +62,31 @@ h1 {
   font-size: 2rem;
   font-weight: bold;
   padding: 15px;
+  text-align: center;
 }
 
 p {
   color: var(--secondary);
   font-size: 1.25rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
   padding: 5px;
 }
 
 .questions {
   padding: 30px 15px;
   margin: auto;
+}
+
+.question-text {
+    width: 80%;
+    /* margin: auto; */
+    color: var(--question-text-col);
+    font-size: 1.25rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 15px;
 }
 
 .answer-key {
@@ -89,6 +103,14 @@ p {
   display: none;
 }
 
+/* #question {
+    color: var(--primary);
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+ */
+
 /*Button Styling */
 .btn {
   background: var(--secondary);
@@ -101,7 +123,7 @@ p {
 }
 
 .start-end {
-  width: 25%;
+  width: 30%;
   margin-top: 10px;
 }
 
@@ -124,13 +146,15 @@ p {
 
 .btn-grid {
   display: grid;
+  width: 80%;
   grid-template-rows: repeat(4, auto);
-  grid-gap: 5px;
-  margin: 20px 0;
+  grid-gap: 10px;
+  /* margin: 20px 0; */
 }
 
 .answerbtn {
-  width: 50%;
-  text-align: left;
-  font-size: 3vw;
+  width: 80%;
+  text-align: center;
+  font-size: 1.25rem;
+  margin: auto;
 }

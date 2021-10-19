@@ -120,10 +120,10 @@ var questionBank = [
   {
     qn: "The acronym for the object representation of a webpage, DOM, stands for:",
     choices: [
-      "doorway opening mechanism",
-      "digital orientation method",
-      "document object model",
-      "device operation manual",
+      "Doorway Opening Mechanism",
+      "Digital Orientation Method",
+      "Document Object Model",
+      "Device Operation Manual",
     ],
     ans: 2,
   },

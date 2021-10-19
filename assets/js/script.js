@@ -5,12 +5,12 @@ var startButtonEl = document.getElementById("start-game");
 
 var questionContainerEl = document.getElementById("question-container");
 var questionDivEl = document.getElementById("question-div");
-var questionTextEl = document.getElementById("question-text");
+var questionTextEl = document.getElementById("qn-text");
 var answerbuttonsEl = document.getElementById("answer-buttons");
 
 // Global variables
 var curQn = 0; // tracks the current question
-var timeLeft = 10; // the time left in the quiz, starts at 120 seconds
+var timeLeft = 120; // the time left in the quiz, starts at 120 seconds
 var timerInterval = 0;
 var gameOver = false;
 
