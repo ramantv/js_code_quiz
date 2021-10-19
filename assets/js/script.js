@@ -23,7 +23,7 @@ console.log(quizQuestions);
 
 function startQuiz() {
   // Clear the starting content, start the clock, then show the first quiz question
-  toggleElementDisplay(startQuizContainerEl);
+  showElement(startQuizContainerEl, false);
   startTimer();
   displayQuestion(curQn);
 }
@@ -39,13 +39,24 @@ var displayQuestion = function (index) {
     answerbutton.addEventListener("click", checkAnswer);
     answerbuttonsEl.appendChild(answerbutton);
   }
-  toggleElementDisplay(questionContainerEl);
+  showElement(questionContainerEl, true);
 };
 
 //check if answer is correct
 var checkAnswer = function (event) {
-  var selectedanswer = event.target;
+  var selectedanswer = event.target.innerText;
+  console.log("selected answer = " + selectedanswer);
+  console.log(
+    "correct answer = " + quizQuestions[curQn].choices[quizQuestions[curQn].ans]
+  );
 
+  if (
+    selectedanswer === quizQuestions[curQn].choices[quizQuestions[curQn].ans]
+  ) {
+    console.log("Correct answer chosen!!");
+  } else {
+    console.log("Wrong answer chosen!!");
+  }
   /*
   if (arrayShuffledQuestions[QuestionIndex].a === selectedanswer.innerText) {
     answerCorrect();
@@ -100,15 +111,21 @@ function showQuestion(index) {
   }
 }
 
-// To show/hide the element
-function toggleElementDisplay(elt) {
-  // If the elt contains the class "show" then remove it and add the class "hide"
+// To show/hide the element - call showElement(el, true) - to show.
+// Add the class "show" or "hide" to the element as specified by booleanShow
+function showElement(elt, booleanShow) {
+  // remove both classes if present, this ensures that only one of "show" or "hide" gets added to teh classList.
   if (elt.classList.contains("show")) {
-    elt.classList.add("hide");
     elt.classList.remove("show");
-  } else {
-    elt.classList.add("show");
+  }
+  if (elt.classList.contains("hide")) {
     elt.classList.remove("hide");
+  }
+
+  if (booleanShow) {
+    elt.classList.add("show");
+  } else {
+    elt.classList.add("hide");
   }
 }
 
