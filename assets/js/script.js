@@ -53,34 +53,18 @@ var checkAnswer = function (event) {
   console.log("selected answer = " + selectedAnswer);
   console.log("correct answer = " + goodAnswer );
 
+  // if the right answeer was chosen show the correct answer message on the screen, 
+  // else show the wrong answer message. If the answer was wrong apply the time penalty as well.
   if (selectedAnswer === goodAnswer) {
     console.log("Correct answer chosen!!");
     showAnswerRightOrWrongMessage(true);
-  } else {
+  } 
+  else {
     console.log("Wrong answer chosen!!");
     showAnswerRightOrWrongMessage(false);
     applyPenalty();
   }
 
-  /*
-  if (arrayShuffledQuestions[QuestionIndex].a === selectedanswer.innerText) {
-    answerCorrect();
-    score = score + 7;
-  } else {
-    answerWrong();
-    score = score - 1;
-    timeleft = timeleft - 3;
-  }
-
-  //go to next question, check if there is more questions
-  QuestionIndex++;
-  if (arrayShuffledQuestions.length > QuestionIndex + 1) {
-    setQuestion();
-  } else {
-    gameover = "true";
-    showScore();
-  }
-  */
 };
 
 // Displays the question and answer choices from the quizQuestions array at the given index
