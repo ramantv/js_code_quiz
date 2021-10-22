@@ -13,6 +13,10 @@ var rightAnswerEl = document.getElementById("right-ans");
 var wrongAnswerEl = document.getElementById("wrong-ans");
 var ansGoodEl = document.getElementById("ans-good");
 
+var endQuizContainerEl = document.getElementById("end-quiz-container");
+var finalScoreValueEl = document.getElementById("final-score-value");
+
+
 // Global variables
 var curQn = 0; // tracks the current question
 var timeLeft = 120; // the time left in the quiz, starts at 120 seconds
@@ -77,9 +81,24 @@ var checkAnswer = function (event) {
   else {
     gameOver = true;
     // show the scores container
-    // showScore();
+    showEndQuizContainer();
   }
 };
+
+// to show the final score and allow the user to submit it to the high scores.
+function showEndQuizContainer() {
+
+  // show the final score (which is the time left)
+  finalScoreValueEl.innerHTML = " " + timeLeft;
+
+  // hide all the other containers.
+  showElement(startQuizContainerEl, false);
+  showElement(questionContainerEl, false);
+  showElement(ansKeyContainerEl, false);
+
+  // show the end-quiz-container
+  showElement(endQuizContainerEl, true);
+}
 
 // before showing the next question, ensure that the buttons for the previous questions are removed.
 function resetQuestionContainer() {
