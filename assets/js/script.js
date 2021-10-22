@@ -8,8 +8,10 @@ var questionDivEl = document.getElementById("question-div");
 var questionTextEl = document.getElementById("qn-text");
 var answerbuttonsEl = document.getElementById("answer-buttons");
 
+var ansKeyContainerEl = document.getElementById("answer-key-container");
 var rightAnswerEl = document.getElementById("right-ans");
 var wrongAnswerEl = document.getElementById("wrong-ans");
+var ansGoodEl = document.getElementById("ans-good");
 
 // Global variables
 var curQn = 0; // tracks the current question
@@ -58,11 +60,11 @@ var checkAnswer = function (event) {
   // else show the wrong answer message. If the answer was wrong apply the time penalty as well.
   if (selectedAnswer === goodAnswer) {
     console.log("Correct answer chosen!!");
-    showAnswerRightOrWrongMessage(true);
+    showAnswerRightOrWrongMessage(curQn, true);
   } 
   else {
     console.log("Wrong answer chosen!!");
-    showAnswerRightOrWrongMessage(false);
+    showAnswerRightOrWrongMessage(curQn, false);
     applyPenalty();
   }
 
@@ -87,13 +89,13 @@ function resetQuestionContainer() {
   }
 }
 
-function showAnswerRightOrWrongMessage(booleanRight) {
+function showAnswerRightOrWrongMessage(qnIdx, booleanRight) {
   if (booleanRight) {
-    showElement(rightAnswerEl, true);
-    showElement(wrongAnswerEl, false);
+    ansGoodEl.innerHTML = "" + (qnIdx+1) + ". " + "Correct &#9989";
+    showElement(ansKeyContainerEl, true);
   } else {
-    showElement(rightAnswerEl, false);
-    showElement(wrongAnswerEl, true);
+    ansGoodEl.innerHTML = "" + (qnIdx+1) + ". " + "Wrong &#10060";
+    showElement(ansKeyContainerEl, true);
   }
 }
 
@@ -144,6 +146,8 @@ function startTimer() {
 
 // Event Listeners
 startButtonEl.addEventListener("click", startQuiz);
+
+
 
 /* ------------ Utility Functions  ------------- */
 
