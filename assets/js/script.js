@@ -89,6 +89,7 @@ function resetQuestionContainer() {
   }
 }
 
+// to show if the previous question's answer was "Correct" or "Wrong"
 function showAnswerRightOrWrongMessage(qnIdx, booleanRight) {
   if (booleanRight) {
     ansGoodEl.innerHTML = "" + (qnIdx+1) + ". " + "Correct &#9989";
@@ -99,6 +100,7 @@ function showAnswerRightOrWrongMessage(qnIdx, booleanRight) {
   }
 }
 
+// penalty for a wrong answer is to reduce 10 seconds from the clock.
 function applyPenalty() {
     timeLeft = timeLeft - penalty;
     if (timeLeft <= 0) {
