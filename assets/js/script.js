@@ -34,9 +34,10 @@ function startQuiz() {
 
 // Displays the question and answer choices from the quizQuestions array at the given index
 var displayQuestion = function (index) {
-  questionTextEl.innerText = quizQuestions[index].qn;
+  questionTextEl.innerText = "" + (index+1) + ". " + quizQuestions[index].qn;
+  var answerbutton;
   for (var i = 0; i < quizQuestions[index].choices.length; i++) {
-    var answerbutton = document.createElement("button");
+    answerbutton = document.createElement("button");
     answerbutton.innerText = quizQuestions[index].choices[i];
     answerbutton.classList.add("btn");
     answerbutton.classList.add("answerbtn");
@@ -53,7 +54,7 @@ var checkAnswer = function (event) {
   console.log("selected answer = " + selectedAnswer);
   console.log("correct answer = " + goodAnswer );
 
-  // if the right answeer was chosen show the correct answer message on the screen, 
+  // if the right answer was chosen show the correct answer message on the screen, 
   // else show the wrong answer message. If the answer was wrong apply the time penalty as well.
   if (selectedAnswer === goodAnswer) {
     console.log("Correct answer chosen!!");
@@ -65,38 +66,24 @@ var checkAnswer = function (event) {
     applyPenalty();
   }
 
+  // If we are more questions left, show the next question, else show the final score.
+  curQn++;
+  if (curQn < quizQuestions.length) {
+    resetQuestionContainer();
+    displayQuestion(curQn);
+  }
+  else {
+    gameOver = true;
+    // show the scores container
+    // showScore();
+  }
 };
 
-// Displays the question and answer choices from the quizQuestions array at the given index
-function showQuestion(index) {
-  // Clear the box
-  quizContentEl.innerHTML = "";
-
-  //Create h1 for the question
-  var h1El = document.createElement("h1");
-  h1El.innerHTML = questionsArray[index].question;
-  quizContentEl.append(h1El);
-
-  //Create ul
-  var ulEl = document.createElement("ul");
-  ulEl.style = "list-style-type:none";
-  quizContentEl.append(ulEl);
-
-  //Create li for each question answer
-  for (var i = 0; i < questionsArray[index].answers.length; i++) {
-    //create li
-    var liEl = document.createElement("li");
-    liEl.classList.add("p-1");
-    ulEl.append(liEl);
-
-    //Create button for each li
-    var buttonEl = document.createElement("button");
-    var questionNumber = i + 1;
-    buttonEl.classList.add("btn");
-    buttonEl.classList.add("btn-info");
-    buttonEl.textContent =
-      questionNumber + ". " + questionsArray[index].answers[i];
-    liEl.append(buttonEl);
+// before showing the next question, ensure that the buttons for the previous questions are removed.
+function resetQuestionContainer() {
+  questionTextEl.innerText = "";
+  while (answerbuttonsEl.firstChild) {
+    answerbuttonsEl.removeChild(answerbuttonsEl.firstChild);
   }
 }
 
@@ -120,7 +107,7 @@ function applyPenalty() {
 // To show/hide the element - call showElement(el, true) - to show.
 // Add the class "show" or "hide" to the element as specified by booleanShow
 function showElement(elt, booleanShow) {
-  // remove both classes if present, this ensures that only one of "show" or "hide" gets added to teh classList.
+  // remove both classes if present, this ensures that only one of "show" or "hide" gets added to the classList.
   if (elt.classList.contains("show")) {
     elt.classList.remove("show");
   }
@@ -128,6 +115,7 @@ function showElement(elt, booleanShow) {
     elt.classList.remove("hide");
   }
 
+  // if booleanShow = true, add the class 'show' else add the class 'hide'
   if (booleanShow) {
     elt.classList.add("show");
   } else {
