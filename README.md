@@ -22,4 +22,7 @@ This program provides a timed multiple-choice quiz on JavaScript fundamentals th
 [Github Repository](https://github.com/ramantv/js_code_quiz)
 
 ## Screenshots
-![Quiz Screenshot](./assets/images/QuizGame.png)
+![Quiz Screenshot1](./assets/images/start_quiz_page.png)
+![Quiz Screenshot2](./assets/images/quiz_question_page.png)
+![Quiz Screenshot3](./assets/images/submit_score_page.png)
+![Quiz Screenshot4](./assets/images/high_scores_page.png)
