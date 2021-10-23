@@ -1,4 +1,5 @@
 // DOM Variables
+var ViewHighScoreEl = document.getElementById("view-high-scores");
 var timerEl = document.getElementById("timer");
 var startQuizContainerEl = document.getElementById("start-quiz-container");
 var startButtonEl = document.getElementById("start-game");
@@ -19,27 +20,42 @@ var formSubmitScore = document.getElementById("submit-score-form");
 
 var hiScoresContainerEl = document.getElementById("high-scores-container");
 var listHighScoreEl = document.getElementById("high-score-list");
+var btnGoBackEl = document.querySelector("#go-back")
+var btnClearScoresEl = document.querySelector("#clear-high-scores")
 
 // Global variables
+const TIME_LIMIT = 120;
 var curQn = 0; // tracks the current question
-var timeLeft = 120; // the time left in the quiz, starts at 120 seconds
+var timeLeft = 0; // the time left in the quiz, starts at 120 seconds
 const penalty = 10; // seconds penalized for wrong answers
 var timerInterval = 0;
 var gameOver = false;
 var finalScore = 0;
 var highScoresArray = [];
+var quizQuestions = [];
 
 // check that question bank is loaded from questions.js
 console.log(questionBank);
 
-// Shuffle the questionBank array and take the first 10 questions for the quiz
-let quizQuestions = shuffle(questionBank).slice(0, 10);
-console.log(quizQuestions);
+function initializeQuiz() {
+  curQn = 0;
+  timeLeft = TIME_LIMIT;
+  timerInterval = 0;
+  gameOver = false;
+  finalScore = 0;
+  highScoresArray = [];
+  loadHighScore();
+
+  quizQuestions = shuffle(questionBank).slice(0, 10);
+  console.log(quizQuestions);
+}
 
 function startQuiz() {
-  // Clear the starting content, start the clock, then show the first quiz question
+  // Initialize, start the clock, then show the first quiz question
+  initializeQuiz();
   showElement(startQuizContainerEl, false);
   startTimer();
+  resetQuestionContainer();
   displayQuestion(curQn);
 }
 
@@ -90,6 +106,19 @@ var checkAnswer = function (event) {
   }
 };
 
+// to show the start quiz container.
+function showStartQuizContainer() {
+
+  // hide all the other containers.
+  showElement(questionContainerEl, false);
+  showElement(ansKeyContainerEl, false);
+  showElement(hiScoresContainerEl, false);
+  showElement(endQuizContainerEl, false);
+
+  // show the start-quiz-container
+  showElement(startQuizContainerEl, true);
+}
+
 // to show the final score and allow the user to submit it to the high scores.
 function showEndQuizContainer(finalScore) {
   // show the final score (which is the time left)
@@ -130,13 +159,36 @@ var saveHighScore = function (event) {
   showHighScoresContainer();
 };
 
-function setupHighScoresContainer(hiScrArr) {
-  //clear visibile list to resort
+function viewHighScores() {
+    console.log("In viewHighScores " + highScoresArray);
+
+    // create the list elements to show the high scores
+    setupHighScoresContainer(highScoresArray);
+
+    // show the high scores container
+    showHighScoresContainer();
+}
+
+var clearHighScores = function (event) {
+  event.preventDefault();
+  localStorage.clear();
+  clearHighScoresList();
+  initializeQuiz();
+  timerEl.textContent = TIME_LIMIT;
+}
+
+//clear all high scores list items
+function clearHighScoresList() {
   while (listHighScoreEl.firstChild) {
     listHighScoreEl.removeChild(listHighScoreEl.firstChild);
   }
+}
 
-  // create elements in order of high scores 
+function setupHighScoresContainer(hiScrArr) {
+  // if there are highscore list items, clear them
+  clearHighScoresList();
+
+  // create elements in order of high scores
   // the hiScrArr should already be setup in desc order
   for (var i = 0; i < hiScrArr.length; i++) {
     var highscoreEl = document.createElement("li");
@@ -178,6 +230,22 @@ function addToHighScores(initials, finScore) {
 //save high scores to local storage
 function saveHighScoresToLocalStorage(hiScAr) {
   localStorage.setItem("HighScores", JSON.stringify(hiScAr));
+}
+
+
+function loadHighScore() {
+  var loadedHighScores = localStorage.getItem("HighScores")
+      if (!loadedHighScores) {
+      return;
+  }
+
+  highScoresArray = JSON.parse(loadedHighScores);
+  console.log('loaded high scores from local storage: ', highScoresArray);
+
+  // Sort highScoresArray in descending order of high scores
+  highScoresArray.sort((a, b) => {
+    return b.score - a.score;
+  });
 }
 
 // before showing the next question, ensure that the buttons for the previous questions are removed.
@@ -252,6 +320,16 @@ startButtonEl.addEventListener("click", startQuiz);
 
 // When the for submit button is clicked on the submit-score form
 formSubmitScore.addEventListener("submit", saveHighScore);
+
+//when view high-scores is clicked
+ViewHighScoreEl.addEventListener("click", viewHighScores);
+
+//Go back button
+btnGoBackEl.addEventListener("click", showStartQuizContainer);
+
+//clear scores button
+btnClearScoresEl.addEventListener("click", clearHighScores)
+
 
 /* ------------ Utility Functions  ------------- */
 
