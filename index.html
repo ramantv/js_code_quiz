@@ -36,32 +36,33 @@
         </section>
 
         <section id="answer-key-container" class="container hide">
-            <div id="right-ans" class="answer-key show"><h4 id="ans-good" class="right-or-wrong">Correct &#9989 </h4></div>
+            <div id="right-ans" class="answer-key show">
+                <h4 id="ans-good" class="right-or-wrong">Correct &#9989 </h4>
+            </div>
         </section>
 
         <section id="end-quiz-container" class="container hide">
-                <div id=final-score-message>
-                    <h1>Game Over!</h1>
-                    <h2>Your final score is: <span id="final-score-value"></span></h2>
-                </div>
-                <form id="initials-form" class="initials">
-                    <p> Enter Initials:
-                        <input type="text" name="initials" id="initials" class="text-input" />
-                        <button class="btn startend" id="sumbit-score" type="submit">Submit</button>
-                    </p>
-                </form>
+            <div id=final-score-message>
+                <h1>Game Over!</h1>
+                <h2>Your final score is: <span id="final-score-value"></span></h2>
+            </div>
+            <form id="submit-score-form" class="initials">
+                <p> Enter Initials:
+                    <input type="text" name="initials" id="initials" class="text-input" />
+                    <button class="btn startend" id="submit-score" type="submit">Submit</button>
+                </p>
+            </form>
         </section>
 
-        <section id="high-scores-container" class="hide">
-            <div class="high-scores container">
-                <h1 class="high-score">High Scores</h1>
-                <ol id="high-score-list" class="score-list"></ol>
-                <div>
-                    <button class="btn" id="go-back">Go back</button>
-                    <button class="btn" id="clear-high-scores">Clear high scores</button>
-                </div>
+        <section id="high-scores-container" class="container hide">
+            <h1 class="high-score">High Scores</h1>
+            <ol id="high-score-list" class="score-list"></ol>
+            <div>
+                <button class="btn" id="go-back">Go back</button>
+                <button class="btn" id="clear-high-scores">Clear high scores</button>
             </div>
         </section>
+
     </main>
 
     <script src="./assets/js/questions.js"></script>

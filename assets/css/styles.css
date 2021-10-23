@@ -108,6 +108,10 @@ p {
     text-align: center;
 }
 
+#high-score {
+  text-align: left;
+}
+
 .show {
   display: flex;
 }
